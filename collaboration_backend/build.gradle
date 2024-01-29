@@ -1,0 +1,76 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.0'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'war'
+}
+
+group = 'com.team1060'
+version = '0.0.1-SNAPSHOT'
+apply plugin: 'war'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+	// security 
+	 implementation 'org.springframework.boot:spring-boot-starter-security'
+	 // jwt 
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.2.0'
+	// Log4j
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+    // email 인증
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.0.5'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    
+    // FOR @ConfigurationProperties
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    
+    //swagger 설정
+    //http://localhost:8081/swagger-ui/index.html
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+
+	// https://mvnrepository.com/artifact/org.jsoup/jsoup
+	implementation 'org.jsoup:jsoup:1.15.3'
+	
+	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+	implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+
+		// 프로젝트의 의존성 설정에 WebDriverManager 추가
+	// https://github.com/bonigarcia/webdrivermanager
+	implementation 'io.github.bonigarcia:webdrivermanager:4.4.3'
+	
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// FOR @ConfigurationProperties
+tasks.named('compileJava') {
+    inputs.files(tasks.named('processResources'))
+}

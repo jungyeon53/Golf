@@ -1,0 +1,13 @@
+oauth:
+  kakao:
+    client_id: 20903cb14efdb6c5b14e65c716f045ef
+    redirect_uri: http://54.180.101.194/oauth/redirected/kakao
+    client_secret: pv9ZImkWMTwYFR8cAsd27ifA9M7V2skY
+    scope: profile_nickname
+    
+  naver:
+    client_id: ROH3jPqXInSqBgf5XRUb
+    redirect_uri: http://54.180.101.194/oauth/redirected/naver
+    client_secret: SzTftZsRU8
+    scope: email, nickname, name, mobile
+http://54.180.101.194:8080/

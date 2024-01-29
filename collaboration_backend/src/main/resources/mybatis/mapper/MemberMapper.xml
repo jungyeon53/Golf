@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team1060.golf.auth.mapper.MemberMapper">
+	
+	
+	
+	<!-- 회원가입 -->
+	<insert id="insert">
+		INSERT INTO tbl_member (
+		email, nickname, username,
+		password, regdate,
+		phone_number, type,
+		is_sms_consent, is_email_consent, name, role, oauthServerType
+		) VALUES (
+		#{email}, #{nickname}, #{username}, #{password}, #{regdate},
+		#{phone_number}, #{type},
+		#{is_sms_consent}, #{is_email_consent}, #{name}, 'user' , 'GOLF'
+		)
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="login"
+		resultType="com.team1060.golf.auth.api.response.ViewMember">
+		SELECT email, password
+		FROM tbl_member
+		WHERE email=#{email} AND password=#{password}
+	</select>
+
+	<!-- 이메일 중복체크 -->
+	<select id="checkedEmail" resultType="boolean">
+		SELECT COUNT(*) > 0 AS is_checkedEmail
+		FROM tbl_member
+		WHERE email = #{email};
+	</select>
+
+	<!-- 전체조회 -->
+	<select id="getList"
+		resultType="com.team1060.golf.auth.api.response.ViewMember">
+		SELECT * FROM tbl_member
+	</select>
+	<!-- 이메일로 1명 조회 -->
+	<select id="select"
+		resultType="com.team1060.golf.auth.api.response.ViewMember">
+		SELECT * FROM tbl_member WHERE email = #{email}
+	</select>
+
+	<!-- 정보수정 -->
+<update id="update">
+    UPDATE tbl_member SET
+    nickname = #{nickname},
+    username = #{username},
+    password = #{password},
+    phone_number = #{phone_number},
+    type = #{type},
+    is_sms_consent = #{is_sms_consent},
+    is_email_consent = #{is_email_consent}
+    WHERE email = #{email}
+</update>
+
+<!-- 정보수정 관리자페이지 -->
+
+<update id="adminupdate">
+    UPDATE tbl_member SET
+    email=#{email},
+    nickname = #{nickname},
+    name = #{name},
+    username = #{username},
+    password = #{password},
+    phone_number = #{phone_number},
+    type = #{type},
+    role = #{role},
+    is_sms_consent = #{is_sms_consent},
+    is_email_consent = #{is_email_consent}
+    WHERE email = #{email}
+</update>
+
+	<!-- 회원 삭제 -->
+	<delete id="delete" parameterType="String">
+		DELETE FROM tbl_member WHERE
+		email = #{email}
+	</delete>
+	
+	<!-- 이름과 전화번호로 아이디 찾기 -->
+	<select id="findEmail" resultType="com.team1060.golf.auth.api.response.ViewMember">
+		SELECT email FROM tbl_member WHERE NAME = #{name} and phone_number = #{phone_number}
+	</select>
+	
+	<select id="checkAdminStatus" resultType="boolean" parameterType="string">
+		SELECT COUNT(*)ㅌ
+        FROM tbl_member
+        WHERE email = #{email} and role = 'admin';
+	</select>
+	
+	<!-- 회원 백업테이블 조회  -->
+	<select id="selectDelUser" resultType="com.team1060.golf.auth.api.response.ViewMember">
+		SELECT * FROM backup_tbl_member
+	</select>
+	
+</mapper>
