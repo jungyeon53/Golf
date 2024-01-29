@@ -4,76 +4,86 @@
 <h4 align="center">작업기간: 2023.12.08 ~ 2024.1.15
 <h6 align="center">바쁜 일상 속에서 온라인 예약 시스템과 쇼핑 솔루션을 <br/>언제 어디서나 쉽고 편리하게 이용할 수 있는 것이 목표입니다.</h6>
 <p align="center">
-  <img src="https://github.com/jungyeon53/senuJeju/assets/150405152/acc0d1ff-e24b-44c6-8032-4b8106ed6641" style="width:1200px">
+  <img src="https://github.com/jungyeon53/Golf/assets/150405152/5c7ea9c7-1706-4449-a05c-75af85abaa5c" style="width:1200px">
 </p>
 
 <h2 align="center">Language</h2>
 <div align="center">
   <img alt="Java" src="https://img.shields.io/badge/Java-007396?&style=for-the-badge&logo=Java&logoColor=white"/>
   <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?&style=for-the-badge&logo=JavaScript&logoColor=white"/>
-  <img alt="JSP" src="https://img.shields.io/badge/JSP-007396?&style=for-the-badge&logo=Java&logoColor=white"/>
+  <img alt="React" src="https://img.shields.io/badge/React-61DAFB?&style=for-the-badge&logo=React&logoColor=white"/>
+
   <br/>
+  <img alt="SCSS" src="https://img.shields.io/badge/SCSS-CC6699?&style=for-the-badge&logo=Sass&logoColor=white"/>
   <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?&style=for-the-badge&logo=CSS3&logoColor=white"/>
   <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?&style=for-the-badge&logo=HTML5&logoColor=white"/>
   <br/>
-  <img alt="jQuery" src="https://img.shields.io/badge/jQuery-0769AD?&style=for-the-badge&logo=jQuery&logoColor=white"/>
+  <img alt="Material-UI" src="https://img.shields.io/badge/Material--UI-0081CB?&style=for-the-badge&logo=Material-UI&logoColor=white"/>
   <img alt="MariaDB" src="https://img.shields.io/badge/MariaDB-003545?&style=for-the-badge&logo=MariaDB&logoColor=white"/>
   <img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap-7952B3?&style=for-the-badge&logo=Bootstrap&logoColor=white"/>
   <br/>
   <img alt="Tomcat" src="https://img.shields.io/badge/Tomcat-F8DC75?&style=for-the-badge&logo=Apache%20Tomcat&logoColor=black"/>
   <img alt="MyBatis" src="https://img.shields.io/badge/MyBatis-007396?&style=for-the-badge&logo=Apache%20MyBatis&logoColor=white"/>
+  <img alt="AWS" src="https://img.shields.io/badge/AWS-232F3E?&style=for-the-badge&logo=Amazon%20AWS&logoColor=white"/>
+
 </div>
 
-## 제주어때 프로젝트 목차
+## 골프의민족 프로젝트 목차
 
 1. [프로젝트 개요](#프로젝트-개요)
-   - [제주어때란?](#제주어때란?)
+   - [골프의 민족이란?](#골프의 민족이란?)
    
 2. [설계](#설계)
    - [요구사항 정의서](#요구사항-정의서)
    - [데이터 베이스](#데이터-베이스)
+   - [와이어프레임] (#와이어-프레임)
+   - [프로토타입] (#프로토-타입)
+   - [배포] (#배포)
 
-3. [제주어때 기능](#제주어때-기능)
+3. [골프의민족 기능](#골프의민족-기능)
 4. [이슈사항 및 리뷰](#이슈사항-및-리뷰)
 
 <br/>
 
 ## 프로젝트 개요
 
-개발기간 : 2023.10.16 ~ 2023.11.07<br/>
+개발기간 : 2023.12.08 ~ 2024.1.15<br/>
 버전 정보 :
-Java 8
-Eclipse
+Java 17
+SpringBoot
+React
 <br/>
 
 ### 프로젝트 선정 배경
 
-코로나로 인해 해외여행이 금지되면서 많은 관광객이 제주도로 몰리는 현상이 있었습니다.<br/>
-제주도로 여행을 가고싶었던 관광객들은 숙소를 예약하고 주변 관광지를 알아보지만 <br/>
-한번에 볼 수 있는 플랫폼이 없었습니다. <br/>
-그래서 저희는 숙박과 주변관광지까지 볼 수 있는 여행 플랫폼으로 제주어때를 기획했습니다.<br/>
+골프가 인기를 끌면서 다양한 연령대의 골퍼들을 위한 서비스를 기획했습니다. <br />
+골프의 민족은 고객님들이 골프를 좀 더 편안하게 즐길 수 있도록 골프장 예약 및 클럽 구매를 한번에 해결할 수 있는 서비스를 제공합니다.<br />
+프로젝트명인 골프의민족은 골프 클럽을 사면 배달해서 받는다는 점이 배달의 민족이 생각이 나서 골프의민족으로 결정하였습니다.
 
-### 제주어때란?
+### 골프의 민족이란?
 
-호텔의 사장님이 제주어때에 호텔등록 및 객실을 등록하면 제주어때에서 홍보하고 고객님이 객실을 예약하는 구조입니다. <br/>
-처음 기획할 때에는 호텔 반경 10km의 주변 관광지까지 볼 수 있도록 하는 것이 목표였습니다. 
+- 바쁜 일상 속에서 효과적인 시간 효율성을 추구하여 예약과 쇼핑을 한번에 이용
+- 온라인 예약 시스템과 쇼핑 솔루션을 선호하며, 언제 어디서나 쉽고 편리하게 서비스를 이용
+- 주요 타겟은 골프를 즐기는 소비자이며 골프 관련 온라인 플랫폼을 기획
 <br/>
 
 ## Team Project
 
-공통 : DB설계, 프로토 타이핑, 서류작성 (요구사항 정의서, 테이블 명세서, 팀 회의록)
+**김정연(본인) <br />
+DB, 회원 & 소셜로그인, 마이페이지, 골프장 예약 & 취소, 골프장 & 코스 CRUD, <br />
+코스 자동등록 이벤트, 회원 탈퇴 트리거, 상품 목록, 백엔드 전반**
 
-**김정연(본인) : 조장, 게시판, 관리자 페이지 , 호텔 & 객실 CRUD**
+이길호(팀장) <br />
+DB, 데이터 크롤링, 골프장 리스트, 골프장 상세페이지, 상품 배송 & 결제 , 깃허브 관리
 
-유호진 : 회원(복호화) , 예약, 결제
-
-윤주민 : 데이터 크롤링 , 호텔 & 객실 목록, 리뷰 
+박주영 <br />
+메인페이지, 관리자페이지, 회원 등급관리, 골프장 관리, 코스관리
 <br/>
 
 ## 설계
 
 ### 요구사항 정의서
-[요구사항 정의서](https://docs.google.com/spreadsheets/d/17hfCd9a4bhDbJpbDySGt81o7KpOmWIun/edit#gid=1134625650)
+[요구사항 정의서](https://docs.google.com/spreadsheets/d/11xJt0YuB2y7jEehkfivjPkPyFJYvaQPjaBfB6qJ9VMo/edit?pli=1#gid=0)
 <p align="">
   <img src="https://github.com/jungyeon53/senuJeju/assets/150405152/93f7bb71-205c-4faa-993e-ff60acc804d4" style="width:800px">
 </p>
