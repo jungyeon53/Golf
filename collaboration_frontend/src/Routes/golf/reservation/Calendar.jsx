@@ -9,7 +9,12 @@ import { jwtDecode } from 'jwt-decode';
 import { getNickname } from '../../../services/auth/Member';
 
 export default function StaticDualCalendars({ parentView,parentGolf, parentUser}) {
-  const today = new Date();
+const today = new Date();
+// today.setMonth(2);
+// today.setDate(1);
+
+const Week = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 21);
+const isDisabled = Week.getMonth() + 1 <= today.getMonth() + 1;
   const tomorrow = new Date(today);
   // 내일 날짜부터 시작 
   tomorrow.setDate(today.getDate() + 1);
@@ -25,16 +30,15 @@ export default function StaticDualCalendars({ parentView,parentGolf, parentUser}
   const [activeButton, setActiveButton] = useState(null);
   const handleButtonClick = (golfName, index, user) => {
     setActiveButton((nextActiveButton) => (nextActiveButton === golfName ? null : golfName))
-    // console.log(golfName);
-    // 부모요소로 전달
+
     parentGolf(golfName, index)
     parentUser(user)
   };
-  // 오늘부터 2주 후
+  // 오늘부터 3주 후
   const twoWeeksLater = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 21);
 
   const handleDateChange = (newDate) => {
-    // 선택된 날짜가 오늘부터 2주 이내인지 확인
+    // 선택된 날짜가 오늘부터 3주 이내인지 확인
     if (newDate >= today && newDate < twoWeeksLater) {
       setSelectedDate(newDate);
       setActivePicker(newDate.getMonth() === today.getMonth() ? 'left' : 'right');
@@ -105,6 +109,7 @@ export default function StaticDualCalendars({ parentView,parentGolf, parentUser}
                   minDate={new Date(today.getFullYear(), today.getMonth() + 1, 1)}
                   maxDate={new Date(today.getFullYear(), today.getMonth() + 1, twoWeeksLater.getDate() - 1)}
                   onMonthChange={() => setActivePicker('right')}
+                  disabled={isDisabled}
                 />
               </Grid>
             </Grid>
